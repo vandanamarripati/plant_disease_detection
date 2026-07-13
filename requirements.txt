@@ -1,0 +1,13 @@
+Flask==3.0.3
+Werkzeug==3.0.4
+python-dotenv==1.0.1
+requests==2.32.3
+numpy==1.26.4
+Pillow==10.4.0
+
+# Only required if you train/run the real CNN model (see model/train_model.py).
+# The app runs fine without these installed — it will use a demo heuristic
+# classifier instead until a trained model file is present.
+tensorflow==2.16.1
+Flask-Login==0.6.3
+Flask-SQLAlchemy==3.1.1

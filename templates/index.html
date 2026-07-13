@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}LeafScan — AI Plant Disease Detection{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">AI-Powered Crop Health</span>
+      <h1>Spot plant disease <em>before</em> it spreads.</h1>
+      <p class="hero-sub">
+        Upload a photo of any leaf and LeafScan's AI identifies the disease,
+        estimates severity, and gives you a treatment plan in seconds —
+        plus live weather advisories to time your next spray.
+      </p>
+      <div class="hero-actions">
+        <a href="{{ url_for('detect_page') }}" class="btn btn-primary">Scan a leaf &rarr;</a>
+        <a href="{{ url_for('weather_page') }}" class="btn btn-ghost">Check field weather</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">38</div>
+          <div class="label">Disease classes</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">14</div>
+          <div class="label">Crop types</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">&lt;2s</div>
+          <div class="label">Avg. scan time</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scan-frame">
+      <img src="https://images.unsplash.com/photo-1466781783364-36c955e42a7f?q=80&w=900&auto=format&fit=crop" alt="Close-up of a green leaf being analyzed">
+      <div class="scan-grid"></div>
+      <div class="scan-line"></div>
+      <span class="scan-tag">&#9679; analyzing leaf tissue...</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-light">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Capabilities</span>
+      <h2>Everything a grower needs, in one dashboard</h2>
+      <p>From instant diagnosis to weather-aware advice, LeafScan combines computer vision with live agronomic data.</p>
+    </div>
+    <div class="card-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#128248;</div>
+        <h3>Instant AI diagnosis</h3>
+        <p>Drag in a leaf photo and get the disease name, confidence score, and severity rating in under two seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127807;</div>
+        <h3>Treatment guidance</h3>
+        <p>Every diagnosis comes with a practical remedy and a prevention tip drawn from agricultural best practice.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#9925;</div>
+        <h3>Live weather advisories</h3>
+        <p>Real-time humidity, rainfall, and temperature data translated into plain-language farming recommendations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128202;</div>
+        <h3>Confidence breakdown</h3>
+        <p>See the model's top three predictions side-by-side so you can judge how certain the diagnosis really is.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128241;</div>
+        <h3>Fully responsive</h3>
+        <p>Scan from the field on your phone or review results on a desktop — the interface adapts to any screen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#9889;</div>
+        <h3>Fast &amp; offline-friendly model</h3>
+        <p>Built on a lightweight MobileNetV2 backbone, small enough to run on modest hardware.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Process</span>
+      <h2>How a scan works</h2>
+      <p style="color: rgba(244,241,230,0.7);">Four steps from photo to action plan.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h4>Capture</h4>
+        <p>Take or upload a clear, well-lit photo of the affected leaf.</p>
+      </div>
+      <div class="step">
+        <h4>Analyze</h4>
+        <p>The CNN model processes the image and scores it against 38 known conditions.</p>
+      </div>
+      <div class="step">
+        <h4>Diagnose</h4>
+        <p>You get the top match, confidence level, and severity at a glance.</p>
+      </div>
+      <div class="step">
+        <h4>Treat</h4>
+        <p>Follow the tailored remedy and prevention steps to protect the rest of the crop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-light">
+  <div class="container text-center">
+    <h2>Ready to check your crop?</h2>
+    <p style="max-width: 50ch; margin: 0 auto 28px; color: var(--ink-soft);">
+      It takes one photo. No account, no waiting — just an instant diagnosis.
+    </p>
+    <a href="{{ url_for('detect_page') }}" class="btn btn-primary">Start a scan &rarr;</a>
+  </div>
+</section>
+
+{% endblock %}

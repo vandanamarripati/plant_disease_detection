@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}My Scans — LeafScan{% endblock %}
+{% block content %}
+
+<div class="container page-header">
+  <span class="eyebrow">Your Account</span>
+  <h1>Hi, {{ current_user.name }}</h1>
+  <p>Here's your recent leaf scan history and the fertilizer tips that came with each result.</p>
+  <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
+    <a href="{{ url_for('detect_page') }}" class="btn btn-primary">Scan a new leaf &rarr;</a>
+    <a href="{{ url_for('fertilizer_page') }}" class="btn btn-ghost">Fertilizer calculator</a>
+    {% if scans %}
+<form method="POST" action="{{ url_for('clear_all_scans') }}"
+      onsubmit="return confirm('Clear your entire scan history? This cannot be undone.');">
+  <button type="submit" class="btn btn-ghost">Clear all history</button>
+</form>
+{% endif %}
+  </div>
+</div>
+
+<div class="container" style="padding-bottom: 80px;">
+  {% if scans %}
+  <div class="scan-history-grid">
+    {% for scan in scans %}
+    <div class="scan-card">
+      <img src="{{ scan.image_url }}" alt="{{ scan.label }}">
+      <div class="scan-card-body">
+        <h4>{{ scan.label }}</h4>
+        <div class="scan-card-meta">
+          {{ scan.plant }} &middot; {{ scan.confidence }}% confidence &middot;
+          {{ scan.created_at.strftime('%d %b %Y') }}
+        </div>
+        {% if scan.fertilizer_summary %}
+        <p class="scan-card-fert">{{ scan.fertilizer_summary }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('delete_scan', scan_id=scan.id) }}"
+      onsubmit="return confirm('Delete this scan?');" style="margin-top:12px;">
+  <button type="submit" class="scan-delete-btn">&#128465; Delete</button>
+</form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="dashboard-empty">
+    <p>You haven't scanned any leaves yet.</p>
+    <a href="{{ url_for('detect_page') }}" class="btn btn-primary">Scan your first leaf &rarr;</a>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

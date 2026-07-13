@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Login — LeafScan{% endblock %}
+{% block content %}
+
+<div class="container auth-wrap">
+  <div class="auth-card">
+    <span class="eyebrow" style="color:var(--sky);">Welcome back</span>
+    <h1>Log in to LeafScan</h1>
+    <p class="auth-sub">Access your scan history and personalized fertilizer advice.</p>
+
+    <form method="POST" action="{{ url_for('login_page') }}">
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+
+    <div class="auth-switch">
+      Don't have an account? <a href="{{ url_for('register_page') }}">Sign up</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

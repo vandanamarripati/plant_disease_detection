@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Sign Up — LeafScan{% endblock %}
+{% block content %}
+
+<div class="container auth-wrap">
+  <div class="auth-card">
+    <span class="eyebrow" style="color:var(--sky);">Get started</span>
+    <h1>Create your account</h1>
+    <p class="auth-sub">Sign up to scan leaves, track your history, and get fertilizer advice.</p>
+
+    <form method="POST" action="{{ url_for('register_page') }}">
+      <div class="form-field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-field">
+        <label for="location">Farm location (optional)</label>
+        <input type="text" id="location" name="location" placeholder="e.g. Nellore, Andhra Pradesh">
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-primary">Create account</button>
+    </form>
+
+    <div class="auth-switch">
+      Already have an account? <a href="{{ url_for('login_page') }}">Log in</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}About — LeafScan{% endblock %}
+{% block content %}
+
+<div class="container page-header">
+  <span class="eyebrow">Project</span>
+  <h1>About LeafScan</h1>
+  <p>An end-to-end demo of an AI-assisted plant disease detection tool, built with a Flask backend, a MobileNetV2-based CNN, and a live weather advisory layer.</p>
+</div>
+
+<section style="padding-top: 0;">
+  <div class="container">
+
+    <div class="card-grid" style="margin-bottom: 48px;">
+      <div class="feature-card" style="background: rgba(244,241,230,0.05); border-color: rgba(244,241,230,0.1);">
+        <h3 style="color: var(--parchment);">The model</h3>
+        <p style="color: rgba(244,241,230,0.7);">
+          A transfer-learning CNN built on MobileNetV2, trained on the 38-class PlantVillage
+          dataset covering 14 crop species. See <code>model/train_model.py</code> to train it yourself.
+        </p>
+      </div>
+      <div class="feature-card" style="background: rgba(244,241,230,0.05); border-color: rgba(244,241,230,0.1);">
+        <h3 style="color: var(--parchment);">Demo mode</h3>
+        <p style="color: rgba(244,241,230,0.7);">
+          Without a trained model file present, the app automatically falls back to a
+          heuristic color-based classifier so every page stays fully interactive out of the box.
+        </p>
+      </div>
+      <div class="feature-card" style="background: rgba(244,241,230,0.05); border-color: rgba(244,241,230,0.1);">
+        <h3 style="color: var(--parchment);">Weather advisories</h3>
+        <p style="color: rgba(244,241,230,0.7);">
+          Live data from the OpenWeatherMap API is converted into rule-based farming tips —
+          spray timing, irrigation, and disease-risk alerts.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <span class="eyebrow">Stack</span>
+      <h2>Built with</h2>
+    </div>
+    <div>
+      <span class="tech-pill">Flask</span>
+      <span class="tech-pill">TensorFlow / Keras</span>
+      <span class="tech-pill">MobileNetV2</span>
+      <span class="tech-pill">NumPy &amp; Pillow</span>
+      <span class="tech-pill">OpenWeatherMap API</span>
+      <span class="tech-pill">Vanilla JS</span>
+      <span class="tech-pill">HTML5 / CSS3</span>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

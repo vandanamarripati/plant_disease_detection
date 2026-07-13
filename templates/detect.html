@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Detect Disease — LeafScan{% endblock %}
+{% block content %}
+
+<div class="container page-header">
+  <span class="eyebrow">AI Diagnosis</span>
+  <h1>Scan a leaf</h1>
+  <p>Upload a clear photo of a single leaf. LeafScan will identify the plant, flag any disease, and suggest a treatment.</p>
+</div>
+
+<div class="container">
+  <div class="detect-layout">
+
+    <div>
+      <form id="uploadForm">
+        <label class="uploader" id="dropzone" for="fileInput">
+          <input type="file" id="fileInput" name="image" accept="image/png, image/jpeg, image/webp">
+          <div class="upload-icon">&#127811;</div>
+          <h3>Drop a leaf photo here</h3>
+          <p>or click to browse &middot; JPG, PNG or WEBP &middot; up to 8MB</p>
+        </label>
+      </form>
+
+      <div class="preview-wrap" id="previewWrap" style="margin-top: 20px; display:none;">
+        <img id="previewImg" src="" alt="Uploaded leaf preview">
+        <div class="scan-grid"></div>
+        <div class="scan-line"></div>
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:20px;">
+        <button type="button" class="btn btn-primary" id="analyzeBtn" disabled>Analyze photo</button>
+        <button type="button" class="btn btn-ghost" id="resetBtn">Clear</button>
+      </div>
+    </div>
+
+    <div class="result-panel" id="resultPanel">
+      <div class="result-empty" id="resultEmpty">
+        <div class="emoji">&#127793;</div>
+        <p class="mt-0">Your diagnosis will appear here once you upload and analyze a photo.</p>
+      </div>
+      <div id="resultContent" style="display:none;"></div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/detect.js') }}"></script>
+{% endblock %}

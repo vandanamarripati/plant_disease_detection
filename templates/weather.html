@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Weather — LeafScan{% endblock %}
+{% block content %}
+
+<div class="container page-header">
+  <span class="eyebrow">Field Conditions</span>
+  <h1>Weather &amp; farming advisories</h1>
+  <p>Live conditions for your field, translated into plain-language guidance on spraying, watering, and disease risk.</p>
+</div>
+
+<div class="container">
+
+  {% if not has_key %}
+  <div class="no-key-notice">
+    No <code>OPENWEATHER_API_KEY</code> found. Add a free key from
+    <a href="https://openweathermap.org/api" target="_blank" rel="noopener" style="text-decoration:underline;">openweathermap.org</a>
+    to your <code>.env</code> file to enable live weather data. The dashboard below will still render once a key is added.
+  </div>
+  {% endif %}
+
+  <div class="weather-search">
+    <input type="text" id="cityInput" placeholder="Enter city name, e.g. Hyderabad">
+    <button class="btn btn-primary" id="searchBtn">Get weather</button>
+    <button class="btn btn-ghost" id="locateBtn" title="Use my location">&#128205; Use my location</button>
+  </div>
+
+  <div id="weatherResults">
+    <div class="weather-empty" id="weatherEmpty">
+      Search a city or use your location to see current conditions and farming tips.
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/weather.js') }}"></script>
+{% endblock %}
