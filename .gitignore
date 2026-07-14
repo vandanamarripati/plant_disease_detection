@@ -9,3 +9,19 @@ static/uploads/*
 !static/uploads/.gitkeep
 model/plant_disease_model.h5
 model/class_indices.json
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Dataset (large)
+ai-model/dataset/
+dataset/
+
+# Model files
+*.h5
+*.keras
+*.pth
+
+# Logs
+logs/
